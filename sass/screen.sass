@@ -13,7 +13,8 @@ body
   display: inline-block
   margin: 20px
   +perspective(1200px)
-  +perspective-origin(50% -200px)
+  +perspective-origin(50% 50%)
+
 
 .ball
   display: inline-block
@@ -22,10 +23,10 @@ body
   border-radius: 100%
   position: relative
   +transform-style(preserve-3d)
-  +background(radial-gradient(50% 80%, circle cover, #81e8f6, #76deef 10%, #055194 66%, #062745 100%))
+  +background(radial-gradient(50% 120%, circle cover, #81e8f6, #76deef 10%, #055194 80%, #062745 100%))
 
   &:before
-    /* Top shading
+    /* Gentle shading (initially from top down)
     content: ""
     position: absolute
     top: 1%
@@ -35,7 +36,6 @@ body
     border-radius: 100%
     +background(radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%))
     -webkit-filter: blur(5px)
-    filter: blur(5px)
     z-index: 2
  
   &:after
@@ -48,10 +48,9 @@ body
     width: 80%
     height: 80%
     border-radius: 100%
-    +background(radial-gradient(50% 80%, circle cover, rgba(255,255,255,0), rgba(255,255,255,0) 78%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 84%, rgba(255,255,255,0) 100%))
+    +background(radial-gradient(50% 80%, circle cover, rgba(255,255,255,0), rgba(255,255,255,0) 74%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 84%, rgba(255,255,255,0) 100%))
     opacity: 0.6
     -webkit-filter: blur(1px)
-    filter: blur(1px)
     z-index: 2
     +transform(rotateZ(-30deg))
 
@@ -63,11 +62,26 @@ body
     +transform(rotateX(90deg) translateZ(-150px))
     z-index: 1
 
-  &.eightball, &.eye
-    +background(radial-gradient(50% 80%, circle cover, rgba(50,50,50,1), rgba(10,10,10,1) 66%, black 100%))
+  &.bubble
+    +background(radial-gradient(50% 55%, circle cover, rgba(240,245,255,0.9), rgba(240,245,255,0.9) 40%, rgba(225,238,255,0.8) 60%, rgba(43,130,255,0.4)))
+    +animation(bubble-anim 2s ease-out infinite)
 
     &:before
-      +background(radial-gradient(50% 80%, circle cover, rgba(255,255,255,0.5), rgba(255, 255, 255, 0) 70%))
+      -webkit-filter: blur(0)
+      height: 80%
+      width: 40%
+      +background(radial-gradient(130% 130%, circle, rgba(255,255,255,0) 0, rgba(255,255,255,0) 46%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 58%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%))
+      +transform(translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg))
+
+    &:after
+      display: block
+
+  &.eightball, &.eye
+    /* Background color */
+    +background(radial-gradient(50% 120%, circle cover, rgba(50,50,50,1), rgba(10,10,10,1) 80%, black 100%))
+
+    &:before
+      +background(radial-gradient(50% 120%, circle cover, rgba(255,255,255,0.5), rgba(255, 255, 255, 0) 70%))
       top: auto
       bottom: 2.5%
       left: 5%
@@ -82,9 +96,8 @@ body
       opacity: 1
       +background(radial-gradient(50% 50%, circle cover, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 14%, rgba(255,255,255,0) 24%))
       +transform-origin(50%, 50%, -200px)
-      +transform(translateZ(200px) rotateX(40deg) rotateY(-25deg))
+      +transform(translateZ(200px) rotateX(25deg) rotateY(-25deg))
       -webkit-filter: blur(10px)
-      filter: blur(10px)
 
     .eight
       width: 40%
@@ -93,7 +106,7 @@ body
       background: white
       border-radius: 100%
       +transform-origin(50%, 50%, -150px)
-      +transform(translateZ(150px) rotateX(30deg) rotateY(20deg))
+      +transform(translateZ(150px) rotateX(20deg) rotateY(20deg))
       position: absolute
 
       &:before
@@ -118,7 +131,6 @@ body
       &:after
         opacity: 0.4
         -webkit-filter: blur(0)
-        filter: blur(0)
 
       .pupil
         width: 40%
@@ -153,8 +165,6 @@ body
           left: 18.75%
           background: rgba(255,255,255,0.2)
 
-  &.bauble
-
   &.tennis
     background: url(../images/tennisball.png) no-repeat
     background-size: 100%
@@ -183,7 +193,6 @@ body
       top: 0
       left: 0
       -webkit-filter: blur(0)
-      filter: blur(0)
       opacity: 0.3
       +background(radial-gradient(50% 80%, circle cover, #81e8f6, #76deef 10%, #055194 66%, #062745 100%))
 
@@ -211,3 +220,17 @@ body
     +transform(translateZ(100px) rotateX(23deg) rotateY(-10deg))
   100%
     +transform(translateZ(100px) rotateX(10deg) rotateY(2deg))
+
++keyframes(bubble-anim)
+  0%
+    +transform(scale(1))
+  20%
+    +transform(scaleY(0.95) scaleX(1.05))
+  48%
+    +transform(scaleY(1.1) scaleX(0.9))
+  68%
+    +transform(scaleY(0.98) scaleX(1.02))
+  80%
+    +transform(scaleY(1.02) scaleX(0.98))
+  97%, 100%
+    +transform(scale(1))
