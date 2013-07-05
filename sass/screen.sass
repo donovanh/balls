@@ -22,7 +22,6 @@ body
   height: 100%
   border-radius: 100%
   position: relative
-  +transform-style(preserve-3d)
   +background(radial-gradient(50% 120%, circle cover, #81e8f6, #76deef 10%, #055194 80%, #062745 100%))
 
   &:before
@@ -59,8 +58,13 @@ body
     width: 100%
     height: 100%
     +background(radial-gradient(50% 50%, circle cover, rgba(0,0,0,0.4), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0) 50%))
-    +transform(rotateX(90deg) translateZ(-150px))
+    +transform(rotateX(90deg) translateZ(-160px))
     z-index: 1
+
+  &.plain
+    +background(black)
+    &:before, &:after
+      display: none
 
   &.bubble
     +background(radial-gradient(50% 55%, circle cover, rgba(240,245,255,0.9), rgba(240,245,255,0.9) 40%, rgba(225,238,255,0.8) 60%, rgba(43,130,255,0.4)))
@@ -95,18 +99,16 @@ body
       display: block
       opacity: 1
       +background(radial-gradient(50% 50%, circle cover, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 14%, rgba(255,255,255,0) 24%))
-      +transform-origin(50%, 50%, -200px)
-      +transform(translateZ(200px) rotateX(25deg) rotateY(-25deg))
+      +transform(translateX(-80px) translateY(-90px) skewX(-20deg))
       -webkit-filter: blur(10px)
 
     .eight
-      width: 40%
-      height: 40%
+      width: 110px
+      height: 110px
       margin: 30%
       background: white
       border-radius: 100%
-      +transform-origin(50%, 50%, -150px)
-      +transform(translateZ(150px) rotateX(20deg) rotateY(20deg))
+      +transform(translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg) scaleX(0.97))
       position: absolute
 
       &:before
@@ -114,15 +116,15 @@ body
         display: block
         position: absolute
         text-align: center
-        height: 100px
-        width: 112px
+        height: 80px
+        width: 110px
         left: 40%
         margin-left: -40px
         top: 40%
         margin-top: -40px
         color: black
         font-family: Arial
-        font-size: 98px
+        font-size: 90px
         line-height: 104px
 
     &.eye
@@ -138,10 +140,9 @@ body
         margin: 30%
         border-radius: 100%
         +background(radial-gradient(50% 50%, circle cover, #208ab4 0%, #6fbfff 30%, #4381b2 100%))
-        +transform-origin(50%, 50%, -150px)
-        +transform(translateZ(150px) rotateX(30deg) rotateY(20deg))
+        +transform(translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg))
         position: absolute
-        +animation(move-eye 5s ease-out infinite)
+        +animation(move-eye-skew 5s ease-out infinite)
 
         &:before
           content: ""
@@ -164,6 +165,11 @@ body
           top: 18.75%
           left: 18.75%
           background: rgba(255,255,255,0.2)
+
+        &.threed
+          +transform-origin(50%, 50%, -150px)
+          +transform(translateZ(150px) rotateX(30deg) rotateY(20deg))
+          +animation(move-eye 5s ease-out infinite)
 
   &.tennis
     background: url(../images/tennisball.png) no-repeat
@@ -220,6 +226,18 @@ body
     +transform(translateZ(100px) rotateX(23deg) rotateY(-10deg))
   100%
     +transform(translateZ(100px) rotateX(10deg) rotateY(2deg))
+
++keyframes(move-eye-skew)
+  0%
+    +transform(none)
+  20%
+    +transform(translateX(-68px) translateY(30px) skewX(15deg) skewY(-10deg) scale(0.95))
+  25%, 44%
+    +transform(none)
+  50%, 60%
+    +transform(translateX(68px) translateY(-40px) skewX(5deg) skewY(2deg) scaleX(0.95))
+  66%, 100%
+    +transform(none)
 
 +keyframes(bubble-anim)
   0%
