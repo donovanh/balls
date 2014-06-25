@@ -1,9 +1,7 @@
-@import compass/reset
-@import compass/css3
-@import mixins
+
 
 body
-  +background(linear-gradient(top, rgba(100,100,100,0.2) 0, rgba(255,255,255,0.5) 40%, white 100%))
+  background: linear-gradient(to bottom, rgba(100,100,100,0.2) 0, rgba(255,255,255,0.5) 40%, white 100%)
   background-repeat: no-repeat
   background-attachment:fixed
 
@@ -12,9 +10,8 @@ body
   height: 300px
   display: inline-block
   margin: 20px
-  +perspective(1200px)
-  +perspective-origin(50% 50%)
-
+  perspective: 1200px
+  perspective-origin: 50% 50%
 
 .ball
   display: inline-block
@@ -22,10 +19,9 @@ body
   height: 100%
   border-radius: 100%
   position: relative
-  +background(radial-gradient(50% 120%, circle cover, #81e8f6, #76deef 10%, #055194 80%, #062745 100%))
+  background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%)
 
   &:before
-    /* Gentle shading (initially from top down)
     content: ""
     position: absolute
     top: 1%
@@ -33,12 +29,11 @@ body
     width: 90%
     height: 90%
     border-radius: 100%
-    +background(radial-gradient(50% 0px, circle cover, #ffffff, rgba(255, 255, 255, 0) 58%))
-    -webkit-filter: blur(5px)
+    background: radial-gradient(circle at top, #ffffff, rgba(255, 255, 255, 0) 58%)
+    filter: blur(5px)
     z-index: 2
- 
+
   &:after
-    /* Top highlight
     content: ""
     position: absolute
     display: none
@@ -47,45 +42,44 @@ body
     width: 80%
     height: 80%
     border-radius: 100%
-    +background(radial-gradient(50% 80%, circle cover, rgba(255,255,255,0), rgba(255,255,255,0) 74%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 84%, rgba(255,255,255,0) 100%))
-    opacity: 0.6
-    -webkit-filter: blur(1px)
+    filter: blur(1px)
     z-index: 2
-    +transform(rotateZ(-30deg))
+    transform: rotateZ(-30deg)
 
   .shadow
     position: absolute
     width: 100%
     height: 100%
-    +background(radial-gradient(50% 50%, circle cover, rgba(0,0,0,0.4), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0) 50%))
-    +transform(rotateX(90deg) translateZ(-160px))
+    background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0) 50%)
+    transform: rotateX(90deg) translateZ(-160px)
     z-index: 1
 
   &.plain
-    +background(black)
+    background: black
     &:before, &:after
       display: none
 
   &.bubble
-    +background(radial-gradient(50% 55%, circle cover, rgba(240,245,255,0.9), rgba(240,245,255,0.9) 40%, rgba(225,238,255,0.8) 60%, rgba(43,130,255,0.4)))
-    +animation(bubble-anim 2s ease-out infinite)
+    background: radial-gradient(circle at 50% 55%, rgba(240,245,255,0.9), rgba(240,245,255,0.9) 40%, rgba(225,238,255,0.8) 60%, rgba(43,130,255,0.4))
+    animation: bubble-anim 2s ease-out infinite
 
     &:before
-      -webkit-filter: blur(0)
+      filter: blur(0)
       height: 80%
       width: 40%
-      +background(radial-gradient(130% 130%, circle, rgba(255,255,255,0) 0, rgba(255,255,255,0) 46%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 58%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%))
-      +transform(translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg))
+      background: radial-gradient(circle at 130% 130%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 46%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 58%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%)
+      transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg)
 
     &:after
       display: block
+      background: radial-gradient(circle at 50% 80%, rgba(255,255,255,0), rgba(255,255,255,0) 74%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 84%, rgba(255,255,255,0) 100%)
+
 
   &.eightball, &.eye
-    /* Background color */
-    +background(radial-gradient(50% 120%, circle cover, rgba(50,50,50,1), rgba(10,10,10,1) 80%, black 100%))
+    background: radial-gradient(circle at 50% 120%, rgba(50,50,50,1), rgba(10,10,10,1) 80%, black 100%)
 
     &:before
-      +background(radial-gradient(50% 120%, circle cover, rgba(255,255,255,0.5), rgba(255, 255, 255, 0) 70%))
+      background: radial-gradient(circle at 50% 120%, rgba(255,255,255,0.5), rgba(255, 255, 255, 0) 70%)
       top: auto
       bottom: 2.5%
       left: 5%
@@ -98,9 +92,9 @@ body
       height: 100%
       display: block
       opacity: 1
-      +background(radial-gradient(50% 50%, circle cover, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 14%, rgba(255,255,255,0) 24%))
-      +transform(translateX(-80px) translateY(-90px) skewX(-20deg))
-      -webkit-filter: blur(10px)
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 14%, rgba(255,255,255,0) 24%)
+      transform: translateX(-80px) translateY(-90px) skewX(-20deg)
+      filter: blur(10px)
 
     .eight
       width: 110px
@@ -108,11 +102,12 @@ body
       margin: 30%
       background: white
       border-radius: 100%
-      +transform(translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg) scaleX(0.97))
+      transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg)
       position: absolute
 
       &:before
         content: "8"
+        font-style: normal
         display: block
         position: absolute
         text-align: center
@@ -128,21 +123,21 @@ body
         line-height: 104px
 
     &.eye
-      +background(radial-gradient(50% 40%, circle cover, #fcfcfc, #efeff1 66%, rgba(155,80,80,1) 100%))
+      background: radial-gradient(circle at 50% 40%, #fcfcfc, #efeff1 66%, rgba(155,80,80,1) 100%)
 
       &:after
         opacity: 0.4
-        -webkit-filter: blur(0)
+        filter: blur(0)
 
       .pupil
         width: 40%
         height: 40%
         margin: 30%
         border-radius: 100%
-        +background(radial-gradient(50% 50%, circle cover, #208ab4 0%, #6fbfff 30%, #4381b2 100%))
-        +transform(translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg))
+        background: radial-gradient(circle at 50% 50%, #208ab4 0%, #6fbfff 30%, #4381b2 100%)
+        transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg)
         position: absolute
-        +animation(move-eye-skew 5s ease-out infinite)
+        animation: move-eye-skew 5s ease-out infinite
 
         &:before
           content: ""
@@ -167,9 +162,9 @@ body
           background: rgba(255,255,255,0.2)
 
         &.threed
-          +transform-origin(50%, 50%, -150px)
-          +transform(translateZ(150px) rotateX(30deg) rotateY(20deg))
-          +animation(move-eye 5s ease-out infinite)
+          transform-origin: 50%, 50%, -150px
+          transform: translateZ(150px) rotateX(30deg) rotateY(20deg)
+          animation: move-eye 5s ease-out infinite
 
   &.tennis
     background: url(../images/tennisball.png) no-repeat
@@ -181,13 +176,12 @@ body
       height: 100%
       top: 0
       left: 0
-      +background(radial-gradient(50% 30%, circle cover, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, rgba(87, 83, 0, 1) 100%))
-
+      background: radial-gradient(circle at 50% 30%, rgba(245, 237, 48, 0), rgba(200, 190, 20, 0.2) 50%, rgba(87, 83, 0, 1) 100%)
 
   &.globe
     background: url(../images/world-map-one-color.png) repeat-x
     background-size: auto 100%
-    +animation(move-map 30s infinite linear)
+    animation: move-map 30s infinite linear
 
     &:before
       z-index: 3
@@ -198,57 +192,59 @@ body
       height: 100%
       top: 0
       left: 0
-      -webkit-filter: blur(0)
+      filter: blur(0)
       opacity: 0.3
-      +background(radial-gradient(50% 80%, circle cover, #81e8f6, #76deef 10%, #055194 66%, #062745 100%))
+      background: radial-gradient(50% 80%, circle cover, #81e8f6, #76deef 10%, #055194 66%, #062745 100%)
 
     .shadow
-      +background(radial-gradient(50% 50%, circle cover, rgba(50,90,90,0.2), rgba(50,90,90,0.1) 40%, rgba(50,90,90,0) 50%))
+      background: radial-gradient(50% 50%, circle cover, rgba(50,90,90,0.2), rgba(50,90,90,0.1) 40%, rgba(50,90,90,0) 50%)
 
-+keyframes(move-map)
+
+@keyframes move-map
   0%
     background-position: -567px 0
   100%
     background-position: 0 0
 
-+keyframes(move-eye)
+@keyframes move-eye
   0%
-    +transform(translateZ(100px) rotateX(10deg) rotateY(2deg))
+    transform: translateZ(100px) rotateX(10deg) rotateY(2deg)
   10%, 12%
-    +transform(translateZ(100px) rotateX(27deg) rotateY(37deg))
+    transform: translateZ(100px) rotateX(27deg) rotateY(37deg)
   25%, 27%
-    +transform(translateZ(100px) rotateX(40deg) rotateY(5deg))
+    transform: translateZ(100px) rotateX(40deg) rotateY(5deg)
   35%, 50%
-    +transform(translateZ(100px) rotateX(18deg) rotateY(0deg))
+    transform: translateZ(100px) rotateX(18deg) rotateY(0deg)
   61%, 70%
-    +transform(translateZ(100px) rotateX(-10deg) rotateY(-41deg))
+    transform: translateZ(100px) rotateX(-10deg) rotateY(-41deg)
   80%
-    +transform(translateZ(100px) rotateX(23deg) rotateY(-10deg))
+    transform: translateZ(100px) rotateX(23deg) rotateY(-10deg)
   100%
-    +transform(translateZ(100px) rotateX(10deg) rotateY(2deg))
+    transform: translateZ(100px) rotateX(10deg) rotateY(2deg)
 
-+keyframes(move-eye-skew)
+@keyframes move-eye-skew
   0%
-    +transform(none)
+    transform: none
   20%
-    +transform(translateX(-68px) translateY(30px) skewX(15deg) skewY(-10deg) scale(0.95))
+    transform: translateX(-68px) translateY(30px) skewX(15deg) skewY(-10deg) scale(0.95)
   25%, 44%
-    +transform(none)
+    transform: none
   50%, 60%
-    +transform(translateX(68px) translateY(-40px) skewX(5deg) skewY(2deg) scaleX(0.95))
+    transform: translateX(68px) translateY(-40px) skewX(5deg) skewY(2deg) scaleX(0.95)
   66%, 100%
-    +transform(none)
+    transform: none
 
-+keyframes(bubble-anim)
+@keyframes bubble-anim
   0%
-    +transform(scale(1))
+    transform: scale(1)
   20%
-    +transform(scaleY(0.95) scaleX(1.05))
+    transform: scaleY(0.95) scaleX(1.05)
   48%
-    +transform(scaleY(1.1) scaleX(0.9))
+    transform: scaleY(1.1) scaleX(0.9)
   68%
-    +transform(scaleY(0.98) scaleX(1.02))
+    transform: scaleY(0.98) scaleX(1.02)
   80%
-    +transform(scaleY(1.02) scaleX(0.98))
+    transform: scaleY(1.02) scaleX(0.98)
   97%, 100%
-    +transform(scale(1))
+    transform: scale(1)
+
